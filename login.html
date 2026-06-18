@@ -3,6 +3,7 @@
 <head>
     <title>Log In to EventEase</title>
     <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="login-signup.css">
     <script src="feedback.js"></script>
 </head>
 
@@ -15,18 +16,22 @@
         <a href="feedback.html">Feedback</a>
     </nav>
 
-    <main>
+    <main class="flexbox flex-column align-center flex-start">
 
-        <form>
+        <form class="flexbox flex-column align-center">
             <h1>Log In to EventEase</h1>
 
+            <div class="flexbox flex-column">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" placeholder="Enter username...">
+            </div>
 
+            <div class="flexbox flex-column">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" placeholder="Enter password...">
+            </div>
 
-            <input type="submit" value="LOG IN">
+            <button type="submit" class="submit-form-btn" style="margin-top: 20px;">LOG IN</button>
 
         </form>
 
@@ -35,7 +40,7 @@
     </main>
 
     <footer>
-        &copy; 2026 EventEase. All Rights Reserved.
+        <p>&copy; 2026 EventEase. All Rights Reserved.</p>
     </footer>
 
 </body>

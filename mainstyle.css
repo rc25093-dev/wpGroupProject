@@ -39,8 +39,11 @@ main{
 }
 
 footer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     text-align:center;
-    padding:20px;
+    padding:20px 0px 20px 0px;
     background-color:#2c3e50;
         color:white;
     width: 100%;
@@ -51,4 +54,64 @@ form{
     padding:20px;
     padding-top:10px;
     background-color:white;
+}
+
+.flexbox{
+    display:flex;
+}
+
+.flex-column{
+        flex-direction:column;
+        gap:10px;
+}
+
+.flex-row{
+        flex-direction:row;
+        gap:10px;
+}
+
+.flex-start{
+    align-items:flex-start;
+}
+
+.align-center{
+    align-items:center;
+}
+
+form.flexbox{
+    width: 60vw;
+    margin: auto;
+}
+
+main h1, main h2{
+    margin-left: 4vw;
+    color: #2c3e50;
+}
+
+form h1{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+a{
+    text-decoration:none;
+    color:#4f7091;
+}
+
+.submit-form-btn{
+    margin:10px;
+    padding: 10px 15px;
+    font-size: 22px;
+    background-color:#4f7091;
+    border-radius:10px;
+    color: white;
+    font-weight: 600;
+    letter-spacing:2px;
+    font-family: Arial, sans-serif;
+}
+
+input[type="text"], input[type="password"], textarea, input[type="date"], input[type="email"], input[type="number"], select{
+    padding: 10px;
+    font: inherit;
+    border: 1px solid #cccccc;
 }
