@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jun 18, 2026 at 12:43 PM
+-- Generation Time: Jun 18, 2026 at 01:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,22 +43,43 @@ CREATE TABLE `bookings` (
 CREATE TABLE `events` (
   `event_id` int(11) NOT NULL,
   `event_name` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL,
   `category` varchar(50) NOT NULL,
   `event_date` date NOT NULL,
   `venue` varchar(100) NOT NULL,
   `ticket_price` decimal(10,2) NOT NULL,
-  `capacity` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `capacity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`event_id`, `event_name`, `category`, `event_date`, `venue`, `ticket_price`, `capacity`, `image`) VALUES
-(1, 'Coding Workshop', 'Education', '2026-07-15', 'Hall A', 50.00, 30, 'coding.jpg'),
-(2, 'Charity Run', 'Sports', '2026-07-20', 'UMPSA Stadium', 20.00, 100, 'run.jpg'),
-(3, 'Music Festival', 'Entertainment', '2026-08-05', 'City Hall', 80.00, 200, 'music.jpg');
+INSERT INTO `events` (`event_id`, `event_name`, `description`, `category`, `event_date`, `venue`, `ticket_price`, `capacity`) VALUES
+(1, 'Coding Workshop', NULL, 'Education', '2026-07-15', 'Hall A', 50.00, 30),
+(2, 'Charity Run', NULL, 'Sports', '2026-07-20', 'UMPSA Stadium', 20.00, 100),
+(3, 'Music Festival', NULL, 'Entertainment', '2026-08-05', 'City Hall', 80.00, 200);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_images`
+--
+
+CREATE TABLE `event_images` (
+  `image_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `image_path` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event_images`
+--
+
+INSERT INTO `event_images` (`image_id`, `event_id`, `image_path`) VALUES
+(1, 1, 'coding.jpg'),
+(2, 2, 'run.jpg'),
+(3, 3, 'music.jpg');
 
 -- --------------------------------------------------------
 
@@ -107,6 +128,13 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`event_id`);
 
 --
+-- Indexes for table `event_images`
+--
+ALTER TABLE `event_images`
+  ADD PRIMARY KEY (`image_id`),
+  ADD KEY `event_id` (`event_id`);
+
+--
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
@@ -137,6 +165,12 @@ ALTER TABLE `events`
   MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `event_images`
+--
+ALTER TABLE `event_images`
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
@@ -158,6 +192,12 @@ ALTER TABLE `users`
 ALTER TABLE `bookings`
   ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
+
+--
+-- Constraints for table `event_images`
+--
+ALTER TABLE `event_images`
+  ADD CONSTRAINT `event_images_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `feedback`
