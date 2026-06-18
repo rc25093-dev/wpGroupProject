@@ -45,3 +45,10 @@ footer{
         color:white;
     width: 100%;
 }
+
+form{
+    border: 3px solid #cccccc;
+    padding:20px;
+    padding-top:10px;
+    background-color:white;
+}

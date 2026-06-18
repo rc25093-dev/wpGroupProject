@@ -21,7 +21,43 @@
 
         <form>
 
+            <h2>Create New Event</h2>
 
+            <label for="eventname">Event Name</label>
+            <input type="text" id="eventname" name="eventname" placeholder="Enter event name...">
+
+            <label for="eventdate">Event Date</label>
+            <input type="date" id="eventdate" name="eventdate" placeholder="YYYY-MM-DD">
+
+            <label for="venue">Event Venue</label>
+            <input type="text" id="venue" name="venue" placeholder="Enter event venue...">
+
+            <label for="ticketprice">Price per Entry</label>
+            <input type="number" id="ticketprice" name="ticketprice" placeholder="Enter price in RM..." min="0" step="0.01">
+
+            <label for="eventcapacity">Event Capacity</label>
+            <input type="number" id="eventcapacity" name="eventcapacity" placeholder="Enter participant amount limit..." min="0" step="1">
+
+            <label for="category">Event Category</label>
+            <select id="category" name="category">
+                <option value="">Select category...</option>
+                <option value="education">Education</option>
+                <option value="sports">Sports</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="lecture">Lecture</option>
+                <option value="workshop">Workshop</option>
+                <option value="social">Social</option>
+                <option value="fairexhibition">Fair/Exhibition</option>
+                <option value="others">Others</option>
+            </select>
+
+            <label for="description">Event Description</label>
+            <textarea id="description" name="description" placeholder="Add a description for your event..."></textarea>
+
+            <label for="eventimage">Upload display images for your event...</label> 
+            <input type="file" id="eventimage" name="eventimage" accept="image/*">
+
+            <button type="submit">CREATE EVENT</button>
 
         </form>
 
