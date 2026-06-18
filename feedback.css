@@ -23,7 +23,7 @@ nav{
 }
 
 nav a{
-    color:white;
+    color:rgb(0, 0, 0);
     text-decoration:none;
     margin:15px;
     font-weight:bold;
