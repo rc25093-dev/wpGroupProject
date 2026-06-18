@@ -30,5 +30,13 @@ nav a{
 }
 
 
-/*nvm guests can save files
-brb*/
+main{
+    padding:20px;
+}
+
+footer{
+    text-align:center;
+    padding:10px;
+    background-color:#2c3e50;
+    
+}
