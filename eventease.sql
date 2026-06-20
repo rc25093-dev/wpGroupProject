@@ -2,9 +2,9 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Generation Time: Jun 18, 2026 at 01:38 PM
--- Server version: 10.4.32-MariaDB
+-- Host: 127.0.0.1
+-- Generation Time: Jun 20, 2026 at 06:48 AM
+-- Server version: 8.0.44
 -- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bookings` (
-  `booking_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `booking_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `booking_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `booking_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -41,14 +41,14 @@ CREATE TABLE `bookings` (
 --
 
 CREATE TABLE `events` (
-  `event_id` int(11) NOT NULL,
-  `event_name` varchar(100) NOT NULL,
-  `description` text DEFAULT NULL,
-  `category` varchar(50) NOT NULL,
+  `event_id` int NOT NULL,
+  `event_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `category` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `event_date` date NOT NULL,
-  `venue` varchar(100) NOT NULL,
+  `venue` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `ticket_price` decimal(10,2) NOT NULL,
-  `capacity` int(11) NOT NULL
+  `capacity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -67,9 +67,9 @@ INSERT INTO `events` (`event_id`, `event_name`, `description`, `category`, `even
 --
 
 CREATE TABLE `event_images` (
-  `image_id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `image_path` varchar(255) NOT NULL
+  `image_id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `image_path` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -88,11 +88,11 @@ INSERT INTO `event_images` (`image_id`, `event_id`, `image_path`) VALUES
 --
 
 CREATE TABLE `feedback` (
-  `feedback_id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `rating` int(11) NOT NULL,
-  `comments` text NOT NULL,
+  `feedback_id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `rating` int NOT NULL,
+  `comments` text COLLATE utf8mb4_general_ci NOT NULL,
   `feedback_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -103,10 +103,11 @@ CREATE TABLE `feedback` (
 --
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `user_id` int NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -156,31 +157,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `event_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `event_images`
 --
 ALTER TABLE `event_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `feedback_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
