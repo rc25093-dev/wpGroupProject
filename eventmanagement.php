@@ -124,8 +124,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <div class="flexbox flex-column event-mgmt-form" style="width: 37vw;">
-            <label for="eventimage">Upload Display Images for your Event (select multiple files before uploading)</label> 
-            <input type="file" id="eventimage" name="eventimage" accept="image/*" multiple required>
+            <label for="eventimage">Upload Display Image for your Event</label> 
+            <input type="file" id="eventimage" name="eventimage" accept="image/*" required>
             </div>
             </div>
 
