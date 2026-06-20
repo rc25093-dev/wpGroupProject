@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2026 at 06:48 AM
+-- Generation Time: Jun 20, 2026 at 10:33 AM
 -- Server version: 8.0.44
 -- PHP Version: 8.2.12
 
@@ -56,9 +56,9 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `event_name`, `description`, `category`, `event_date`, `venue`, `ticket_price`, `capacity`) VALUES
-(1, 'Coding Workshop', NULL, 'Education', '2026-07-15', 'Hall A', 50.00, 30),
-(2, 'Charity Run', NULL, 'Sports', '2026-07-20', 'UMPSA Stadium', 20.00, 100),
-(3, 'Music Festival', NULL, 'Entertainment', '2026-08-05', 'City Hall', 80.00, 200);
+(9, 'TEMASYA OLAHRAGA 2026 – FAKULTI KOMPUTERAN', '🏃‍♂️ TEMASYA OLAHRAGA 2026 – FAKULTI KOMPUTERAN 🏃‍♀️\r\n\r\nPerhatian semua pelajar Fakulti Komputeran!\r\n\r\nPendaftaran kini DIBUKA untuk menyertai Temasya Olahraga 2026! 💥\r\nInilah peluang anda untuk menunjukkan bakat dalam acara sukan balapan dan padang serta mengharumkan nama fakulti!\r\n\r\nSELECTION\r\nTempat📍:  \r\n- Padang SMK Indera Shahbandar \r\nTarikh 🗓️: \r\n- 16 Mei (Larian)🏃‍♀️🏃‍♂️\r\n- 17 Mei (Bukan Larian)\r\n\r\n\r\n📌 Acara yang dipertandingkan:\r\n\r\n* Larian 100m, 200m, 400m\r\n* Larian jarak jauh\r\n* Lompat jauh\r\n* Lontar peluru\r\n    (dan banyak lagi!)\r\n\r\n📅 Tarikh acara: 14/6/2026 \r\n📍 Tempat: Stadium Darul Makmur, Kuantan \r\n\r\n🎯 Siapa boleh sertai?\r\nSemua pelajar Fakulti Komputeran\r\n\r\n📝 Daftar sekarang sebelum terlambat!\r\n👉 https://forms.gle/e5soxheZVZctqmRu8\r\n\r\n🔥 Jangan lepaskan peluang untuk:\r\n\r\n* Menyertai aktiviti sihat\r\n* Mewakili fakulti\r\n* Menang hadiah menarik!\r\n\r\nJom sertai dan buktikan semangat kesukanan anda! 💪\r\n\r\n Sebarang pertanyaan boleh hubungi:\r\n☎️ Shahrul : +60 18-351 1106\r\n\r\n\r\n#UMPSA\r\n#TemasyaOlahraga \r\n#FKStudent \r\n#FKSharing \r\n#PETAKOMNext', 'sports', '2026-05-16', 'Padang SMK Indera Shahbandar ', 20.00, 100),
+(10, 'UMPSA SUPER LEAGUE 2026 ', '🏆✨ UMPSA SUPER LEAGUE 2026 ✨🏆\r\n\r\nOur Faculty of Computing athletes, proudly known as the Arctic Foxes, have once again brought pride and glory to the faculty through their outstanding spirit, dedication, and performance throughout the tournament. 🦊🔥\r\n\r\nDon’t forget to join us for the Closing Ceremony:\r\n\r\n📅 16 May 2026\r\n📍 Dewan Kompleks Sukan, UMPSA Gambang\r\n⏰ 10:30 AM\r\n👕 Dress Code: Sport Attire\r\n📣 Show Your Pride!\r\n\r\nLeaderboard events include:\r\n🏐 Volleyball\r\n⚽ Football\r\n🏐 Netball\r\n🎯 Petanque\r\n\r\nThe finals on 16 May 2026 will feature the battle for glory in:\r\n⚽ Football\r\n🏐 Netball\r\n🎯 Petanque\r\n\r\nWith 33 athletes carrying the hopes of the faculty, let’s come together and give our fullest support to the Arctic Foxes as they continue making the Faculty of Computing proud! 💪🔥\r\n\r\n#UMPSA\r\n#FKStudent\r\n#FKSharing\r\n#mypdti\r\n#PETAKOMNext', 'sports', '2026-05-16', 'Dewan Kompleks Sukan, UMPSA Gambang', 0.00, 300),
+(11, 'Flagship Extreme Carnival 2026 – Fun Run 5KM', '🏃‍♀️🔥 Lace up for a cause!\r\n\r\nJoin us at the Flagship Extreme Carnival 2026 – Fun Run 5KM and run towards making a difference 💫❤️\r\n\r\n📍 Adab UMPSA, Pekan\r\n📅 13 June 2026\r\n🕰️ 8:00am-3:30pm\r\n\r\n✨ Open for Extreme Club members & non-members\r\n🎟️ Multiple packages available with exciting goodies including medals, wristbands & jerseys!\r\n\r\nEvery step you take helps support our fundraising charity event 🤝\r\nScan the QR code and register now!\r\n\r\n#ExtremeCarnival2026 #UMPSA #CharityRun #RunForACause #ExtremeClub #Pekan #FundraisingEvent #FunRun', 'sports', '2026-06-13', 'Adab UMPSA, Pekan', 10.00, 200);
 
 -- --------------------------------------------------------
 
@@ -77,9 +77,9 @@ CREATE TABLE `event_images` (
 --
 
 INSERT INTO `event_images` (`image_id`, `event_id`, `image_path`) VALUES
-(1, 1, 'coding.jpg'),
-(2, 2, 'run.jpg'),
-(3, 3, 'music.jpg');
+(9, 9, '1781943996_WhatsApp Image 2026-06-20 at 16.15.57.jpeg'),
+(10, 10, '1781944157_Untitled.jpg'),
+(11, 11, '1781944347_WhatsApp Image 2026-06-20 at 16.31.26.jpeg');
 
 -- --------------------------------------------------------
 
@@ -109,6 +109,13 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `created_at`) VALUES
+(1, 'test', 'test@gmail.com', '$2y$10$Bsm5AsfT/ZtdUSoeswyeRubJn47X5P7tGBqcgczPQv7j3.3mW96CO', '2026-06-20 06:31:56');
 
 --
 -- Indexes for dumped tables
@@ -163,13 +170,13 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `event_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `event_images`
 --
 ALTER TABLE `event_images`
-  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -181,7 +188,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
