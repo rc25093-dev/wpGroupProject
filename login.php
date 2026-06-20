@@ -31,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="events.html">Events</a>
-        <a href="booking.html">Booking</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="feedback.html">Feedback</a>
+        <a href="index.php">Home</a>
+        <a href="events.php">Events</a>
+        <a href="booking.php">Booking</a>
+        <a href="dashboard.php">Dashboard</a>
+        <a href="feedback.php">Feedback</a>
     </nav>
 
     <main class="flexbox flex-column align-center flex-start">

@@ -53,11 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Events</a>
-        <a href="#">Booking</a>
-        <a href="#">Dashboard</a>
-        <a href="#">Feedback</a>
+        <a href="index.php">Home</a>
+        <a href="events.php">Events</a>
+        <a href="booking.php">Booking</a>
+        <a href="dashboard.php">Dashboard</a>
+        <a href="feedback.php">Feedback</a>
     </nav>
 
     <main>
