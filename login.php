@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db.php';
+require 'database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -18,3 +18,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log In to EventEase</title>
+    <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="login-signup.css">
+    <script src="feedback.js"></script>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="booking.html">Booking</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="feedback.html">Feedback</a>
+    </nav>
+
+    <main class="flexbox flex-column align-center flex-start">
+
+        <form action="login.php" method="POST" class="flexbox flex-column align-center">
+            <h1>Log In to EventEase</h1>
+
+            <div class="flexbox flex-column">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter username...">
+            </div>
+
+            <div class="flexbox flex-column">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password...">
+            </div>
+
+            <button type="submit" class="submit-form-btn" style="margin-top: 20px;">LOG IN</button>
+
+        </form>
+
+        <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 EventEase. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

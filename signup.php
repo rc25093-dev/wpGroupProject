@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require 'database.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -11,3 +11,61 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up for EventEase</title>
+    <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="login-signup.css">
+    <script src="feedback.js"></script>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="booking.html">Booking</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="feedback.html">Feedback</a>
+    </nav>
+
+    <main class="flexbox flex-column align-center flex-start">
+
+        <form action="signup.php" method="POST" class="flexbox flex-column align-center">
+            <h1>Sign Up for EventEase</h1>
+
+            <div class="flexbox flex-column">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter new username...">
+            </div>
+
+            <div class="flexbox flex-column">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter email...">
+            </div>
+
+            <div class="flexbox flex-column">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter new password...">
+            </div>
+            
+            <div class="flexbox flex-column">
+            <label for="password">Confirm Password</label>
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Re-enter password...">
+            </div>
+
+            <button type="submit" class="submit-form-btn" style="margin-top: 20px;">SIGN UP</button>
+
+        </form>
+
+        <p>Already have an account? <a href="login.php">Log In</a></p>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 EventEase. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
