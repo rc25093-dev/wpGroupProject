@@ -68,34 +68,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="flexbox flex-column align-center">
             <div class="flexbox flex-column event-mgmt-form">
             <label for="eventname">Event Name</label>
-            <input type="text" id="eventname" name="eventname" placeholder="Enter event name...">
+            <input type="text" id="eventname" name="eventname" placeholder="Enter event name..." required>
             </div>
 
             <div class="flexbox flex-column event-mgmt-form">
             <label for="eventdate">Event Date</label>
-            <input type="date" id="eventdate" name="eventdate" placeholder="YYYY-MM-DD">
+            <input type="date" id="eventdate" name="eventdate" placeholder="YYYY-MM-DD" required>
             </div>
 
             <div class="flexbox flex-column event-mgmt-form">
             <label for="venue">Event Venue</label>
-            <input type="text" id="venue" name="venue" placeholder="Enter event venue...">
+            <input type="text" id="venue" name="venue" placeholder="Enter event venue..." required>
             </div>
             </div>
 
             <div class="flexbox flex-column align-center">
             <div class="flexbox flex-column event-mgmt-form">
             <label for="ticketprice">Price per Entry</label>
-            <input type="number" id="ticketprice" name="ticketprice" placeholder="Enter price in RM..." min="0" step="0.01">
+            <input type="number" id="ticketprice" name="ticketprice" placeholder="Enter price in RM..." min="0" step="0.01" required>
             </div>
 
             <div class="flexbox flex-column event-mgmt-form">
             <label for="eventcapacity">Event Capacity</label>
-            <input type="number" id="eventcapacity" name="eventcapacity" placeholder="Enter participant amount limit..." min="0" step="1">
+            <input type="number" id="eventcapacity" name="eventcapacity" placeholder="Enter participant amount limit..." min="0" step="1" required>
             </div>
 
             <div class="flexbox flex-column event-mgmt-form">
             <label for="category">Event Category</label>
-            <select id="category" name="category">
+            <select id="category" name="category" required>
                 <option value="">Select category...</option>
                 <option value="education">Education</option>
                 <option value="sports">Sports</option>
@@ -115,12 +115,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="flexbox flex-column">
             <div class="flexbox flex-column event-mgmt-form" style="width: 37vw; margin-top: 20px;">
             <label for="description">Event Description</label>
-            <textarea id="description" name="description" placeholder="Add a description for your event..."></textarea>
+            <textarea id="description" name="description" placeholder="Add a description for your event..." required></textarea>
             </div>
 
             <div class="flexbox flex-column event-mgmt-form" style="width: 37vw;">
             <label for="eventimage">Upload Display Images for your Event (select multiple files before uploading)</label> 
-            <input type="file" id="eventimage" name="eventimage" accept="image/*" multiple>
+            <input type="file" id="eventimage" name="eventimage" accept="image/*" multiple required>
             </div>
             </div>
 
