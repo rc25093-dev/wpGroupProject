@@ -1,0 +1,929 @@
+/* =====================================================
+   GOOGLE FONT
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:#f4f7fb;
+
+    color:#1f2937;
+
+    min-height:100vh;
+
+}
+
+/* =====================================================
+   BACKGROUND GLOW
+===================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:450px;
+
+    height:450px;
+
+    border-radius:50%;
+
+    top:-180px;
+
+    left:-180px;
+
+    background:rgba(29,53,87,.06);
+
+    filter:blur(120px);
+
+    z-index:-2;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    bottom:-200px;
+
+    right:-200px;
+
+    background:rgba(44,93,157,.06);
+
+    filter:blur(150px);
+
+    z-index:-2;
+
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 70px;
+
+    background:linear-gradient(90deg,#1d3557,#2c5d9d);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+.logo i{
+
+    margin-right:10px;
+
+}
+
+.navbar ul{
+
+    list-style:none;
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.navbar ul li a{
+
+    color:#eef4ff;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    font-weight:600;
+
+    padding:8px 10px;
+
+    border-radius:8px;
+
+}
+
+.navbar ul li a:hover, .navbar ul li a.active{
+
+    background:rgba(255,255,255,.12);
+
+    color:#fff;
+
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    text-align:center;
+
+    padding:90px 20px;
+
+    background:
+
+    linear-gradient(rgba(29,53,87,.78),rgba(44,93,157,.78)),
+
+    url('images/banner.jpg');
+
+    background-size:cover;
+
+    background-position:center;
+
+}
+
+.hero h1{
+
+    font-size:50px;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+.hero p{
+
+    margin-top:15px;
+
+    color:#eef4ff;
+
+    font-size:18px;
+
+}
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:22px;
+
+    margin-bottom:45px;
+
+}
+
+.stat-card{
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    padding:28px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(139,92,246,.35);
+
+}
+
+.stat-card i{
+
+    font-size:40px;
+
+    color:#a855f7;
+
+    margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+    font-size:34px;
+
+}
+
+.stat-card p{
+
+    color:#cbd5e1;
+
+    margin-top:10px;
+
+}
+
+/* =====================================================
+   BOOKING FORM
+===================================================== */
+
+.booking-container{
+
+    width:850px;
+
+    max-width:95%;
+
+    margin:40px auto;
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:40px;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.08);
+
+}
+
+.booking-container h2{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+    font-size:34px;
+
+    color:#1d3557;
+
+}
+
+.booking-container label{
+
+    display:block;
+
+    margin-top:18px;
+
+    margin-bottom:8px;
+
+    font-weight:500;
+
+}
+
+.booking-container input,
+
+.booking-container select{
+
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    color:#1f2937;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.booking-container input:focus,
+
+.booking-container select:focus{
+
+    outline:none;
+
+    box-shadow:0 0 15px rgba(139,92,246,.45);
+
+}
+
+.booking-container button{
+
+    width:100%;
+
+    margin-top:30px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    background:linear-gradient(90deg,#1d3557,#2c5d9d);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.booking-container button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(139,92,246,.45);
+
+}
+
+/* =====================================================
+   CALCULATION BOXES
+===================================================== */
+
+.calculation-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin-top:30px;
+
+}
+
+.calc-card{
+
+    background:#232845;
+
+    border-radius:15px;
+
+    padding:20px;
+
+}
+
+.calc-card label{
+
+    margin:0;
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+}
+
+.calc-card input{
+
+    margin-top:10px;
+
+    background:#1b2038;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#22c55e;
+
+}
+
+/* =====================================================
+   TABLES
+===================================================== */
+
+.table-section,
+
+.record-section{
+
+    width:92%;
+
+    margin:50px auto;
+
+}
+
+.table-section h2,
+
+.record-section h2{
+
+    margin-bottom:20px;
+
+    color:#c084fc;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(15px);
+
+}
+
+th{
+
+    background:#7c3aed;
+
+    color:white;
+
+    padding:18px;
+
+    font-size:15px;
+
+}
+
+td{
+
+    padding:18px;
+
+    text-align:center;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+tr:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+/* =====================================================
+   EDIT & DELETE BUTTONS
+===================================================== */
+
+.action-buttons{
+
+    display:flex;
+    justify-content:center;
+    gap:10px;
+
+}
+
+.edit-btn{
+
+    background:#2563eb;
+    color:white;
+    padding:10px 18px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+
+}
+
+.edit-btn:hover{
+
+    background:#1d4ed8;
+    transform:translateY(-2px);
+
+}
+
+.delete-btn{
+
+    background:#dc2626;
+    color:white;
+    padding:10px 18px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+
+}
+
+.delete-btn:hover{
+
+    background:#b91c1c;
+    transform:translateY(-2px);
+
+}
+
+/* =====================================================
+   STATUS BADGES
+===================================================== */
+
+.badge{
+
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+
+}
+
+.badge.available{
+
+    background:#14532d;
+    color:#86efac;
+
+}
+
+.badge.almost{
+
+    background:#78350f;
+    color:#fde68a;
+
+}
+
+.badge.full{
+
+    background:#7f1d1d;
+    color:#fca5a5;
+
+}
+
+/* =====================================================
+   HOVER EFFECTS
+===================================================== */
+
+.booking-container,
+.stat-card,
+table{
+
+    transition:.35s;
+
+}
+
+.booking-container:hover{
+
+    box-shadow:
+    0 25px 45px rgba(139,92,246,.35);
+
+}
+
+.stat-card:hover i{
+
+    transform:scale(1.15);
+    transition:.3s;
+
+}
+
+/* =====================================================
+   FORM ANIMATION
+===================================================== */
+
+.booking-container{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =====================================================
+   BUTTON SHINE
+===================================================== */
+
+.booking-container button{
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+.booking-container button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.3),
+        transparent
+    );
+
+    transition:.8s;
+
+}
+
+.booking-container button:hover::before{
+
+    left:100%;
+
+}
+
+/* =====================================================
+   TABLE EFFECTS
+===================================================== */
+
+tbody tr{
+
+    transition:.3s;
+
+}
+
+tbody tr:hover{
+
+    transform:scale(1.01);
+
+}
+
+/* =====================================================
+   INPUT ICON SPACE
+===================================================== */
+
+.booking-container input,
+.booking-container select{
+
+    padding-left:15px;
+
+}
+
+/* =====================================================
+   CUSTOM SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111827;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+    #7c3aed,
+    #a855f7);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#9333ea;
+
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px){
+
+.navbar{
+
+    flex-direction:column;
+    gap:15px;
+    padding:20px;
+
+}
+
+.navbar ul{
+
+    flex-wrap:wrap;
+    justify-content:center;
+
+}
+
+.hero h1{
+
+    font-size:36px;
+
+}
+
+.booking-container{
+
+    padding:25px;
+
+}
+
+.calculation-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+table{
+
+    font-size:14px;
+
+}
+
+th,
+td{
+
+    padding:12px;
+
+}
+
+.action-buttons{
+
+    flex-direction:column;
+
+}
+
+}
+
+/* =====================================================
+   FOOTER SPACE
+===================================================== */
+
+body{
+
+    padding-bottom:80px;
+
+}
+
+/* =====================================================
+   GLASS BORDER
+===================================================== */
+
+.booking-container{
+
+    position:relative;
+
+}
+
+.booking-container::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:22px;
+
+    padding:1px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(168,85,247,.5),
+        transparent,
+        rgba(168,85,247,.5)
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    pointer-events:none;
+
+}
+
+/* =====================================================
+   CALCULATION HIGHLIGHT
+===================================================== */
+
+#finalTotal{
+
+    color:#22c55e;
+    font-size:22px;
+    font-weight:700;
+
+}
+
+#discount{
+
+    color:#fbbf24;
+
+}
+
+#service{
+
+    color:#60a5fa;
+
+}
+
+/* =====================================================
+   AVAILABLE SEATS
+===================================================== */
+
+#seatAvailable{
+
+    color:#86efac;
+    font-weight:600;
+
+}
+
+/* =====================================================
+   LOADING ANIMATION
+===================================================== */
+
+.stat-card{
+
+    animation:floatCard 5s ease-in-out infinite;
+
+}
+
+.stat-card:nth-child(2){
+
+    animation-delay:.4s;
+
+}
+
+.stat-card:nth-child(3){
+
+    animation-delay:.8s;
+
+}
+
+@keyframes floatCard{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+

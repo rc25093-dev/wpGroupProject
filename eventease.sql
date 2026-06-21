@@ -31,6 +31,9 @@ CREATE TABLE `bookings` (
   `booking_id` int NOT NULL,
   `user_id` int NOT NULL,
   `event_id` int NOT NULL,
+  `customer_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `quantity` int NOT NULL DEFAULT '1',
+  `total_payment` decimal(10,2) NOT NULL DEFAULT '0.00',
   `booking_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

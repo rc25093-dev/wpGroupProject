@@ -1,0 +1,1549 @@
+/* ===========================================
+   EVENTEASE EVENT LISTING
+   PART 1
+=========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:#f4f7fb;
+
+    color:#1f2937;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+/* Background Glow */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:450px;
+
+    height:450px;
+
+    background:rgba(29,53,87,.06);
+
+    border-radius:50%;
+
+    top:-180px;
+
+    left:-180px;
+
+    filter:blur(140px);
+
+    z-index:-2;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:450px;
+
+    height:450px;
+
+    background:rgba(44,93,157,.05);
+
+    border-radius:50%;
+
+    right:-180px;
+
+    bottom:-180px;
+
+    filter:blur(140px);
+
+    z-index:-2;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#141424;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#8b5cf6;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#a855f7;
+
+}
+
+/* ===========================================
+   NAVBAR
+=========================================== */
+
+.navbar{
+
+    position:sticky;
+
+    top:0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 60px;
+
+    background:linear-gradient(90deg,#1d3557,#2c5d9d);
+
+    z-index:999;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+.logo i{
+
+    margin-right:10px;
+
+}
+
+.navbar ul{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.navbar a{
+
+    text-decoration:none;
+
+    color:#eef4ff;
+
+    transition:.3s;
+
+    font-weight:600;
+
+    padding:8px 10px;
+
+    border-radius:8px;
+
+}
+
+.navbar a:hover,
+
+.active{
+
+    background:rgba(255,255,255,.12);
+
+    color:#fff !important;
+
+}
+
+/* ===========================================
+   HERO
+=========================================== */
+
+.hero{
+
+    text-align:center;
+
+    padding:90px 20px;
+
+    background:
+
+    linear-gradient(rgba(29,53,87,.78),rgba(44,93,157,.78)),
+    url("images/banner.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+}
+
+.hero h1{
+
+    font-size:55px;
+
+    margin-bottom:15px;
+
+    animation:slideDown .8s ease;
+
+}
+
+.hero p{
+
+    color:#cbd5e1;
+
+    font-size:18px;
+
+    animation:fadeText 1.2s ease;
+
+}
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fadeText{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ===========================================
+   STATISTICS
+=========================================== */
+
+.statistics{
+
+    width:90%;
+
+    margin:50px auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.stat{
+
+    background:rgba(255,255,255,.05);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    transition:.35s;
+
+}
+
+.stat:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 40px rgba(124,58,237,.35);
+
+}
+
+.stat i{
+
+    font-size:42px;
+
+    color:#8b5cf6;
+
+    margin-bottom:18px;
+
+}
+
+.stat h2{
+
+    font-size:38px;
+
+    margin-bottom:8px;
+
+}
+
+.stat p{
+
+    color:#cbd5e1;
+
+}
+
+/* ===========================================
+   SEARCH
+=========================================== */
+
+.search-box{
+
+    width:90%;
+
+    margin:0 auto 60px;
+
+}
+
+.search-box form{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    background:rgba(255,255,255,.05);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    backdrop-filter:blur(14px);
+
+}
+
+.search-box input,
+
+.search-box select{
+
+    width:260px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#232845;
+
+    color:white;
+
+}
+
+.search-box input:focus,
+
+.search-box select:focus{
+
+    outline:none;
+
+    box-shadow:0 0 15px #8b5cf6;
+
+}
+
+.search-box button{
+
+    background:linear-gradient(90deg,#1d3557,#2c5d9d);
+
+    color:white;
+
+    border:none;
+
+    padding:15px 28px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.search-box button:hover{
+
+    background:linear-gradient(90deg,#2c5d9d,#1d3557);
+
+}
+
+.reset{
+
+    background:#6b7280;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:15px 25px;
+
+    border-radius:12px;
+
+}
+
+.reset:hover{
+
+    background:#4b5563;
+
+}
+
+/* ===========================================
+   EVENT GRID
+=========================================== */
+
+.event-grid{
+
+    width:90%;
+
+    margin:50px auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(340px,1fr));
+
+    gap:30px;
+
+}
+
+/* ===========================================
+   EVENT CARD
+=========================================== */
+
+.event-card{
+
+    background:#1b2038;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    position:relative;
+
+    border:1px solid rgba(255,255,255,.05);
+
+}
+
+.event-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 45px rgba(124,58,237,.35);
+
+}
+
+.image-wrapper{
+
+    position:relative;
+
+    height:230px;
+
+    overflow:hidden;
+
+}
+
+.image-wrapper img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.event-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.badge{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    background:#8b5cf6;
+
+    color:white;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.price-tag{
+
+    position:absolute;
+
+    bottom:18px;
+
+    right:18px;
+
+    background:#22c55e;
+
+    color:white;
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+}
+
+.event-body{
+
+    padding:24px;
+
+}
+
+.event-body h2{
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+}
+
+.event-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    color:#cbd5e1;
+
+}
+
+.event-info i{
+
+    width:22px;
+
+    color:#a855f7;
+
+}
+
+/* ===========================================
+   EVENT DETAILS
+=========================================== */
+
+.seat-status{
+
+    display:inline-block;
+
+    margin:20px 0 15px;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:white;
+
+}
+
+.available{
+
+    background:#22c55e;
+
+}
+
+.almost{
+
+    background:#f59e0b;
+
+}
+
+.sold{
+
+    background:#ef4444;
+
+}
+
+/* ===========================================
+   PROGRESS BAR
+=========================================== */
+
+.progress-container{
+
+    margin-top:18px;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:12px;
+
+    background:#2d3558;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    width:0%;
+
+    background:linear-gradient(90deg,#7c3aed,#c084fc);
+
+    transition:1s;
+
+}
+
+.progress-container small{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:#cbd5e1;
+
+}
+
+/* ===========================================
+   CARD FOOTER
+=========================================== */
+
+.card-footer{
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.card-footer small{
+
+    color:#94a3b8;
+
+}
+
+.card-footer h3{
+
+    color:#22c55e;
+
+    margin-top:6px;
+
+    font-size:28px;
+
+}
+
+.details-btn{
+
+    background:linear-gradient(90deg,#1d3557,#2c5d9d);
+
+    color:white;
+
+    border:none;
+
+    padding:14px 22px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.details-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 35px rgba(124,58,237,.45);
+
+}
+
+/* ===========================================
+   MODAL
+=========================================== */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+    padding:25px;
+
+}
+
+.modal-content{
+
+    width:920px;
+
+    max-width:95%;
+
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    background:#181c31;
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.55);
+
+    position:relative;
+
+    animation:popup .35s ease;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        transform:translateY(40px) scale(.95);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0) scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.close{
+
+    position:absolute;
+
+    top:20px;
+
+    right:25px;
+
+    font-size:34px;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    z-index:5;
+
+}
+
+.close:hover{
+
+    color:#c084fc;
+
+    transform:rotate(90deg);
+
+}
+
+.modal-image{
+
+    width:100%;
+
+    height:320px;
+
+    object-fit:cover;
+
+    border-radius:22px 22px 0 0;
+
+}
+
+/* ===========================================
+   MODAL HEADER
+=========================================== */
+
+.modal-header{
+
+    padding:30px;
+
+}
+
+.modal-header h2{
+
+    font-size:34px;
+
+    margin-top:12px;
+
+}
+
+.modal-category{
+
+    display:inline-block;
+
+    background:#8b5cf6;
+
+    padding:8px 16px;
+
+    border-radius:25px;
+
+    font-size:13px;
+
+}
+
+/* ===========================================
+   MODAL GRID
+=========================================== */
+
+.modal-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    padding:0 30px 30px;
+
+}
+
+.modal-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:#232845;
+
+    padding:20px;
+
+    border-radius:16px;
+
+}
+
+.modal-item i{
+
+    font-size:24px;
+
+    color:#a855f7;
+
+}
+
+.modal-item small{
+
+    color:#94a3b8;
+
+}
+
+/* ===========================================
+   PRICE SECTION
+=========================================== */
+
+.price-section{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+    padding:0 30px 30px;
+
+}
+
+.price-card{
+
+    background:#232845;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+.price-card h2{
+
+    margin-top:10px;
+
+    color:#22c55e;
+
+}
+
+.price-card.early{
+
+    border:2px solid #8b5cf6;
+
+}
+
+.price-card.save{
+
+    border:2px solid #f59e0b;
+
+}
+
+.price-card.save h2{
+
+    color:#fbbf24;
+
+}
+
+/* ===========================================
+   DESCRIPTION
+=========================================== */
+
+.description-box{
+
+    padding:0 30px 30px;
+
+}
+
+.description-box h3{
+
+    margin-bottom:15px;
+
+}
+
+.description-box p{
+
+    color:#d1d5db;
+
+    line-height:1.8;
+
+}
+
+/* ===========================================
+   SEATS
+=========================================== */
+
+.seat-wrapper{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+    padding:0 30px 30px;
+
+}
+
+.seat-card{
+
+    background:#232845;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    padding:25px;
+
+}
+
+.seat-card h2{
+
+    font-size:36px;
+
+    color:#a855f7;
+
+}
+
+.seat-card small{
+
+    color:#94a3b8;
+
+}
+
+/* ===========================================
+   BOOKING PROGRESS
+=========================================== */
+
+.progress{
+
+    width:calc(100% - 60px);
+
+    margin:0 auto;
+
+    height:16px;
+
+    background:#374151;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    width:0%;
+
+    border-radius:30px;
+
+    background:linear-gradient(90deg,#7c3aed,#c084fc);
+
+    transition:1s ease;
+
+}
+
+#progressText{
+
+    text-align:center;
+
+    margin:18px 0 35px;
+
+    font-size:18px;
+
+    color:#d1d5db;
+
+    font-weight:500;
+
+}
+
+/* ===========================================
+   COUNTDOWN
+=========================================== */
+
+.countdown{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    padding:20px 30px 35px;
+
+}
+
+.countdown div{
+
+    width:120px;
+
+    background:#232845;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    padding:22px;
+
+    transition:.3s;
+
+}
+
+.countdown div:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 25px rgba(124,58,237,.3);
+
+}
+
+.countdown h2{
+
+    font-size:40px;
+
+    color:#c084fc;
+
+    margin-bottom:8px;
+
+}
+
+.countdown small{
+
+    color:#94a3b8;
+
+}
+
+/* ===========================================
+   BOOK BUTTON
+=========================================== */
+
+.book-btn{
+
+    width:90%;
+
+    display:block;
+
+    margin:10px auto 35px;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:linear-gradient(90deg,#1d3557,#2c5d9d);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.book-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 20px 40px rgba(124,58,237,.45);
+
+}
+
+.book-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+
+    90deg,
+
+    transparent,
+
+    rgba(255,255,255,.35),
+
+    transparent
+
+    );
+
+    transition:.8s;
+
+}
+
+.book-btn:hover::before{
+
+    left:100%;
+
+}
+
+.book-btn i{
+
+    margin-right:10px;
+
+}
+
+/* ===========================================
+   CARD GLOW
+=========================================== */
+
+.event-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:22px;
+
+    padding:1px;
+
+    background:
+
+    linear-gradient(
+
+    135deg,
+
+    transparent,
+
+    rgba(29,53,87,.35),
+
+    transparent
+
+    );
+
+    -webkit-mask:
+
+    linear-gradient(#fff 0 0) content-box,
+
+    linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+
+    mask-composite: exclude;
+
+    opacity:0;
+
+    transition:.4s;
+
+}
+
+.event-card:hover::before{
+
+    opacity:1;
+
+}
+
+/* ===========================================
+   FLOATING STATS
+=========================================== */
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.stat{
+
+    animation:floating 5s ease-in-out infinite;
+
+}
+
+.stat:nth-child(2){
+
+    animation-delay:.4s;
+
+}
+
+.stat:nth-child(3){
+
+    animation-delay:.8s;
+
+}
+
+.stat:nth-child(4){
+
+    animation-delay:1.2s;
+
+}
+
+/* ===========================================
+   IMAGE ZOOM
+=========================================== */
+
+.image-wrapper{
+
+    overflow:hidden;
+
+}
+
+.image-wrapper img{
+
+    transition:.5s;
+
+}
+
+.event-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+/* ===========================================
+   MODAL SCROLLBAR
+=========================================== */
+
+.modal-content::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.modal-content::-webkit-scrollbar-thumb{
+
+    background:#8b5cf6;
+
+    border-radius:20px;
+
+}
+
+.modal-content::-webkit-scrollbar-track{
+
+    background:#232845;
+
+}
+
+/* ===========================================
+   RESPONSIVE
+=========================================== */
+
+@media(max-width:992px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        padding:20px;
+
+    }
+
+    .navbar ul{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:18px;
+
+    }
+
+    .hero{
+
+        padding:70px 20px;
+
+    }
+
+    .hero h1{
+
+        font-size:40px;
+
+    }
+
+    .statistics{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .modal-grid,
+
+    .price-section,
+
+    .seat-wrapper{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .statistics{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .event-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .countdown{
+
+        flex-wrap:wrap;
+
+    }
+
+    .countdown div{
+
+        width:90px;
+
+    }
+
+    .hero h1{
+
+        font-size:32px;
+
+    }
+
+    .hero p{
+
+        font-size:15px;
+
+    }
+
+    .search-box form{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .search-box input,
+
+    .search-box select,
+
+    .search-box button,
+
+    .reset{
+
+        width:100%;
+
+        max-width:420px;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .modal-content{
+
+        width:100%;
+
+        border-radius:15px;
+
+    }
+
+    .modal-image{
+
+        height:220px;
+
+    }
+
+    .modal-header h2{
+
+        font-size:26px;
+
+    }
+
+    .seat-card h2{
+
+        font-size:28px;
+
+    }
+
+    .countdown h2{
+
+        font-size:28px;
+
+    }
+
+}
+
+/* ===========================================
+   FOOTER SPACE
+=========================================== */
+
+body{
+
+    padding-bottom:70px;
+
+}

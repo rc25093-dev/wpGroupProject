@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['user_id'];
-        echo "<script>alert('Login successful!'); window.location.href='index.html';</script>";
+        echo "<script>alert('Login successful!'); window.location.href='index.php';</script>";
         exit();
     } else {
         echo "<script>alert('Invalid credentials.');</script>";
@@ -30,12 +30,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <nav>
-        <a href="index.php">Home</a>
-        <a href="events.php">Events</a>
-        <a href="booking.php">Booking</a>
-        <a href="dashboard.php">Dashboard</a>
-        <a href="feedback.php">Feedback</a>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            EventEase
+        </div>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="event_listing.php">Events</a></li>
+            <li><a href="booking.php">Booking</a></li>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="feedback.php">Feedback</a></li>
+            <li><a href="login.php" class="active">Login</a></li>
+            <li><a href="signup.php">Register</a></li>
+        </ul>
     </nav>
 
     <main class="flexbox flex-column align-center flex-start">

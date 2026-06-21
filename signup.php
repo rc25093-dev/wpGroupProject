@@ -39,12 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <nav>
-        <a href="index.php">Home</a>
-        <a href="events.php">Events</a>
-        <a href="booking.php">Booking</a>
-        <a href="dashboard.php">Dashboard</a>
-        <a href="feedback.php">Feedback</a>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-user-plus"></i>
+            EventEase
+        </div>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="event_listing.php">Events</a></li>
+            <li><a href="booking.php">Booking</a></li>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="feedback.php">Feedback</a></li>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="signup.php" class="active">Register</a></li>
+        </ul>
     </nav>
 
     <main class="flexbox flex-column align-center flex-start">
