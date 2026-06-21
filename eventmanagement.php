@@ -55,6 +55,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .flex-row{
             gap:1vw;
         }
+
+        body, form,input,select,textarea,button,label,h1,h2,h3,p {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        input,
+        select,
+        textarea {
+            font-size: 0.95rem;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .submit-form-btn {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+        }
     </style>
 </head>
 
@@ -125,11 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <option value="education">Education</option>
                 <option value="sports">Sports</option>
                 <option value="entertainment">Entertainment</option>
-                <option value="lecture">Lecture</option>
-                <option value="workshop">Workshop</option>
-                <option value="social">Social</option>
-                <option value="fairexhibition">Fair/Exhibition</option>
-                <option value="others">Others</option>
             </select>
             </div>
             

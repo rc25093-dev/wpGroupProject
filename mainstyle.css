@@ -10,8 +10,10 @@ Dashboard page
 Feedback page
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 body{
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color:#f4f4f4;
     margin:0;
     display:flex;
@@ -19,7 +21,9 @@ body{
     min-height: 100vh;
     width: 100%;
 }
-
+html, body, h1, h2, h3, h4, h5, h6, p, span, div, label, input, textarea, select, button, a{
+    font-family: 'Poppins', sans-serif;
+}
 nav, .navbar{
     background: linear-gradient(90deg, #1d3557, #2c5d9d);
     padding: 16px 6%;
@@ -147,7 +151,7 @@ a{
     color: white;
     font-weight: 600;
     letter-spacing:2px;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     box-shadow: 0 6px 18px rgba(29, 53, 87, 0.2);
 }

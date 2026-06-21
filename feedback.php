@@ -141,6 +141,132 @@ ORDER BY feedback_date DESC
     <title>EventEase Feedback</title>
     <link rel="stylesheet" href="mainstyle.css">
     <script src="feedback.js" defer></script>
+    <style>
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        .feedback-banner-wrap {
+            width: 100%;
+            margin: 18px 0 24px;
+        }
+
+        .feedback-banner {
+            width: 100%;
+            max-height: 360px;
+            object-fit: cover;
+            display: block;
+            border-radius: 18px;
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+        }
+
+        #feedbackForm {
+            width: min(760px, 100%);
+            margin: 0 auto 28px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+        }
+
+        #feedbackForm h2 {
+            margin: 0 0 18px;
+            text-align: center;
+            color: #1d3557;
+        }
+
+        #feedbackForm label {
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        #feedbackForm select,
+        #feedbackForm textarea {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            box-sizing: border-box;
+        }
+
+        .rating-box {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .rating-box label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+            color: #f59e0b;
+            cursor: pointer;
+        }
+
+        .rating-box input {
+            accent-color: #f59e0b;
+        }
+
+        #errorMessage {
+            min-height: 22px;
+            margin: 0;
+            color: #dc2626;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .feedback-summary {
+            background: linear-gradient(90deg, #eef5ff, #f8fbff);
+            border-radius: 14px;
+            padding: 18px 22px;
+            text-align: center;
+            margin: 0 auto 30px;
+            max-width: 420px;
+            box-shadow: inset 0 0 0 1px #dfe9ff;
+        }
+
+        .feedback-summary h2 {
+            margin: 0;
+            color: #1d3557;
+            font-size: 1.3rem;
+        }
+
+        .feedback-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .feedback-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 18px 20px;
+            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+        }
+
+        .feedback-card p {
+            margin: 8px 0;
+            color: #334155;
+        }
+
+        .feedback-card strong {
+            color: #1d3557;
+        }
+
+        .feedback-card a {
+            color: #2c5d9d;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .feedback-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
@@ -174,9 +300,11 @@ ORDER BY feedback_date DESC
 </p>
 
 <?php endif; ?>
-<img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200"
-     class="feedback-banner"
-     alt="Event Feedback">
+<div class="feedback-banner-wrap">
+    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200"
+         class="feedback-banner"
+         alt="Event Feedback">
+</div>
 
 <form
 method="POST"
@@ -396,6 +524,7 @@ Average Rating:
 Recent Feedback
 </h2>
 
+<div class="feedback-list">
 <?php foreach($feedbacks as $fb): ?>
 
 <div class="feedback-card">
@@ -431,6 +560,7 @@ Delete
 </div>
 
 <?php endforeach; ?>
+</div>
 
 </main>
 <script>

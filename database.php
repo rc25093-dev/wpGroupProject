@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'eventease';
+$db   = 'eventease_db';
 $user = 'root';
 $pass = 'User/Chud6716';
 $charset = 'utf8mb4';
