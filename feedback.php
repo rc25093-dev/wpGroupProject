@@ -300,18 +300,14 @@ ORDER BY feedback_date DESC
 </p>
 
 <?php endif; ?>
-<div class="feedback-banner-wrap">
-    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200"
-         class="feedback-banner"
-         alt="Event Feedback">
-</div>
+
 
 <form
 method="POST"
 id="feedbackForm"
 class="flexbox flex-column align-center">
 
-<h2>Submit Feedback</h2>
+    <h2>Submit Feedback</h2>
 
 <div class="flexbox flex-column">
 
@@ -486,6 +482,13 @@ rows="5"><?= $editFeedback['comments'] ?? '' ?></textarea>
 <p id="errorMessage"></p>
 
 <?php if($editFeedback): ?>
+<input
+type="hidden"
+name="feedback_id"
+value="<?= $editFeedback['feedback_id']; ?>">
+<?php endif; ?>
+
+<?php if($editFeedback): ?>
 
 <button
 type="submit"
@@ -573,6 +576,6 @@ Delete
             }
         });
     });
-</script>
-</body>
+   </script>
+   </body>
 </html>
