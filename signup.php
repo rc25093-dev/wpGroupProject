@@ -11,25 +11,23 @@ if ($loggedIn) {
 $message = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $username = trim($_POST['username'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
 
     if (strlen($password) < 8) {
         $message = "Password must be at least 8 characters long.";
     } else {
-
         $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
         $stmt->execute([$username, $email]);
-        
+
         if ($stmt->fetch()) {
             $message = "Username or Email already taken!";
         } else {
-
             $hashed = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
             $stmt->execute([$username, $email, $hashed]);
-            
+
             echo "<script>alert('Registration successful!'); window.location.href='login.php';</script>";
             exit();
         }
@@ -72,6 +70,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="signup.php" method="POST" id="signupForm" class="flexbox flex-column align-center">
         
         <h1>Sign Up for EventEase</h1>
+
+        <?php if (!empty($message)): ?>
+            <script>
+                window.onload = function() {
+                    alert('<?php echo addslashes($message); ?>');
+                };
+            </script>
+        <?php endif; ?>
 
         <div class="flexbox flex-column">
         <label for="username">Username</label>
