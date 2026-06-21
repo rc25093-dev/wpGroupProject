@@ -33,7 +33,7 @@ try {
     }
 
     if ($result = mysqli_query($conn, "SELECT event_name, event_date, venue FROM events ORDER BY event_date ASC LIMIT 6")) {
-        while ($row = mysqli_fetch_assoc($result)) {
+        $while ($row = mysqli_fetch_assoc($result)) {
             $events[] = $row;
         }
     }
@@ -52,21 +52,43 @@ try {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+        }
+
         .dashboard-hero {
-            background: linear-gradient(90deg, #1d3557, #2c5d9d);
+            background: url('dashboardimage.png') no-repeat center center;
+            background-size: cover;
             color: #fff;
-            padding: 52px 6%;
+            padding: 80px 6% 140px 6%;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 18px;
             flex-wrap: wrap;
             animation: fadeUp 0.6s ease;
+            position: relative;
+        }
+
+        /* Dark overlay to ensure text readability over the background image */
+        .dashboard-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, rgba(29, 53, 87, 0.85), rgba(44, 93, 157, 0.7));
+            z-index: 1;
+        }
+
+        .dashboard-hero > div, .dashboard-hero .dashboard-action-btn {
+            position: relative;
+            z-index: 2;
         }
 
         .dashboard-hero h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #fff;
         }
 
@@ -83,7 +105,7 @@ try {
             color: #12213f;
             text-decoration: none;
             font-weight: 700;
-            padding: 12px 18px;
+            padding: 12px 24px;
             border-radius: 999px;
             box-shadow: 0 8px 18px rgba(248, 180, 0, 0.3);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -98,17 +120,19 @@ try {
             background: #fff;
             border-radius: 18px;
             padding: 28px;
-            margin: 30px auto;
+            margin: -80px auto 40px auto;
             width: min(1180px, 92%);
-            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
             animation: fadeUp 0.7s ease;
+            position: relative;
+            z-index: 10;
         }
 
         .stats-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 18px;
-            margin-bottom: 22px;
+            margin-bottom: 30px;
         }
 
         .stat-box {
@@ -123,6 +147,29 @@ try {
 
         .stat-box:hover {
             transform: translateY(-3px);
+        }
+
+        /* Specific style for Total Revenue block to include the background image */
+        .revenue-box {
+            background: url('TotalRevenue.png') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            color: #fff;
+        }
+
+        .revenue-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(18, 33, 63, 0.65);
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .revenue-box .stat-icon, .revenue-box .stat-info h3, .revenue-box .stat-info p {
+            color: #fff !important;
+            position: relative;
+            z-index: 2;
         }
 
         .stat-icon {
@@ -141,11 +188,39 @@ try {
             color: #5b6b85;
         }
 
+        /* Grid layout to match image alongside the event list table */
+        .dashboard-content-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        @media (min-width: 768px) {
+            .dashboard-content-layout {
+                grid-template-columns: 350px 1fr;
+            }
+        }
+
+        .upcoming-event-img-container {
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .upcoming-event-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
         .table-title {
             color: #1d3557;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin: 24px 0 12px;
+            margin-bottom: 14px;
         }
 
         table {
@@ -156,7 +231,7 @@ try {
         }
 
         th, td {
-            padding: 12px 14px;
+            padding: 14px;
             border-bottom: 1px solid #eef2f7;
             text-align: left;
         }
@@ -169,6 +244,15 @@ try {
 
         tr:nth-child(even) td {
             background: #fbfcff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            background: #fff;
+            margin-top: 40px;
+            border-top: 1px solid #eef2f7;
         }
 
         @keyframes fadeUp {
@@ -234,7 +318,7 @@ try {
                         <p>Total Capacity</p>
                     </div>
                 </div>
-                <div class="stat-box">
+                <div class="stat-box revenue-box">
                     <i class="fa-solid fa-dollar-sign stat-icon"></i>
                     <div class="stat-info">
                         <h3>RM <?php echo number_format($stats['total_revenue'], 2); ?></h3>
@@ -243,34 +327,40 @@ try {
                 </div>
             </div>
 
-            <div class="table-title">Upcoming Events Overview</div>
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Event Name</th>
-                            <th>Date</th>
-                            <th>Location</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (!empty($events)): ?>
-                            <?php foreach ($events as $row): ?>
+            <div class="dashboard-content-layout">
+                <div class="upcoming-event-img-container">
+                    <img src="upcomingEvent.png" alt="Upcoming Events Preview">
+                </div>
+                
+                <div>
+                    <div class="table-title">Upcoming Events</div>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td><strong><?php echo htmlspecialchars($row['event_name']); ?></strong></td>
-                                    <td><?php echo date('F j, Y', strtotime($row['event_date'])); ?></td>
-                                    <td><?php echo htmlspecialchars($row['venue']); ?></td>
-                                    <td><span style="color: #1f9d61; font-weight: 700;">Upcoming</span></td>
+                                    <th>Event Name</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <tr>
-                                <td colspan="4" style="text-align: center; color: #777;">No upcoming events found.</td>
-                            </tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody>
+                                <?php if (!empty($events)): ?>
+                                    <?php foreach ($events as $row): ?>
+                                        <tr>
+                                            <td><strong><?php echo htmlspecialchars($row['event_name']); ?></strong></td>
+                                            <td><?php echo date('M j, Y', strtotime($row['event_date'])); ?></td>
+                                            <td><span style="color: #1f9d61; font-weight: 700; background: #e8f7f0; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem;">Upcoming</span></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="3" style="text-align: center; color: #777;">No upcoming events found.</td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
