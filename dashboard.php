@@ -15,6 +15,7 @@ $stats = [
     'total_revenue' => 0.00
 ];
 $events = [];
+$newestEvent = null;
 
 try {
     if ($result = mysqli_query($conn, "SELECT COUNT(*) AS total_events FROM events")) {
@@ -32,13 +33,34 @@ try {
         $stats['total_revenue'] = (float)($row['total_revenue'] ?? 0.00);
     }
 
-    if ($result = mysqli_query($conn, "SELECT event_name, event_date, venue FROM events ORDER BY event_date ASC LIMIT 6")) {
-        $while ($row = mysqli_fetch_assoc($result)) {
+    if ($result = mysqli_query($conn, "SELECT event_id, event_name, event_date, venue, description, category, ticket_price, capacity FROM events ORDER BY event_date DESC")) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $eventDate = strtotime($row['event_date']);
+            $today = strtotime(date('Y-m-d'));
+
+            if ($eventDate > $today) {
+                $row['status'] = 'Upcoming';
+                $row['status_color'] = '#1f9d61';
+                $row['status_bg'] = '#e8f7f0';
+            } elseif ($eventDate == $today) {
+                $row['status'] = 'Ongoing';
+                $row['status_color'] = '#d97706';
+                $row['status_bg'] = '#fff7e6';
+            } else {
+                $row['status'] = 'Completed';
+                $row['status_color'] = '#6b7280';
+                $row['status_bg'] = '#f3f4f6';
+            }
+
+            if (!$newestEvent) {
+                $newestEvent = $row;
+            }
+
             $events[] = $row;
         }
     }
 } catch (Exception $e) {
-    // Graceful fallback if something goes wrong while reading the dashboard data.
+
 }
 ?>
 <!DOCTYPE html>
@@ -329,11 +351,25 @@ try {
 
             <div class="dashboard-content-layout">
                 <div class="upcoming-event-img-container">
-                    <img src="upcomingEvent.png" alt="Upcoming Events Preview">
+                    <?php if (!empty($newestEvent)): ?>
+                        <?php
+                            $previewImage = 'music.jpg.jpeg';
+                            $previewQuery = mysqli_query($conn, "SELECT image_path FROM event_images WHERE event_id = " . (int)$newestEvent['event_id'] . " ORDER BY image_id ASC LIMIT 1");
+                            if ($previewQuery && mysqli_num_rows($previewQuery) > 0) {
+                                $previewRow = mysqli_fetch_assoc($previewQuery);
+                                if (!empty($previewRow['image_path'])) {
+                                    $previewImage = 'eventimages/' . htmlspecialchars($previewRow['image_path']);
+                                }
+                            }
+                        ?>
+                        <img src="<?php echo htmlspecialchars($previewImage); ?>" alt="<?php echo htmlspecialchars($newestEvent['event_name']); ?> Preview">
+                    <?php else: ?>
+                        <img src="music.jpg.jpeg" alt="Upcoming Events Preview">
+                    <?php endif; ?>
                 </div>
                 
                 <div>
-                    <div class="table-title">Upcoming Events</div>
+                    <div class="table-title">Event Status Overview</div>
                     <div style="overflow-x: auto;">
                         <table>
                             <thead>
@@ -349,12 +385,16 @@ try {
                                         <tr>
                                             <td><strong><?php echo htmlspecialchars($row['event_name']); ?></strong></td>
                                             <td><?php echo date('M j, Y', strtotime($row['event_date'])); ?></td>
-                                            <td><span style="color: #1f9d61; font-weight: 700; background: #e8f7f0; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem;">Upcoming</span></td>
+                                            <td>
+                                                <span style="color: <?php echo htmlspecialchars($row['status_color']); ?>; font-weight: 700; background: <?php echo htmlspecialchars($row['status_bg']); ?>; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem;">
+                                                    <?php echo htmlspecialchars($row['status']); ?>
+                                                </span>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="3" style="text-align: center; color: #777;">No upcoming events found.</td>
+                                        <td colspan="3" style="text-align: center; color: #777;">No events found.</td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>
