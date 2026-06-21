@@ -323,11 +323,15 @@ body::after{
 
     margin-bottom:8px;
 
+    color:#1f2937;
+
 }
 
 .stat p{
 
-    color:#cbd5e1;
+    color:#334155;
+
+    font-weight:500;
 
 }
 
@@ -461,7 +465,7 @@ body::after{
 
 .event-card{
 
-    background:#1b2038;
+    background:#ffffff;
 
     border-radius:22px;
 
@@ -471,7 +475,7 @@ body::after{
 
     position:relative;
 
-    border:1px solid rgba(255,255,255,.05);
+    border:1px solid #e5e7eb;
 
 }
 
@@ -557,6 +561,8 @@ body::after{
 
     padding:24px;
 
+    background:#ffffff;
+
 }
 
 .event-body h2{
@@ -564,6 +570,8 @@ body::after{
     margin-bottom:15px;
 
     font-size:24px;
+
+    color:#1d3557;
 
 }
 
@@ -575,7 +583,7 @@ body::after{
 
     gap:10px;
 
-    color:#cbd5e1;
+    color:#334155;
 
 }
 
@@ -583,7 +591,7 @@ body::after{
 
     width:22px;
 
-    color:#a855f7;
+    color:#2c5d9d;
 
 }
 
@@ -669,7 +677,7 @@ body::after{
 
     margin-top:10px;
 
-    color:#cbd5e1;
+    color:#475569;
 
 }
 
@@ -691,13 +699,13 @@ body::after{
 
 .card-footer small{
 
-    color:#94a3b8;
+    color:#64748b;
 
 }
 
 .card-footer h3{
 
-    color:#22c55e;
+    color:#16a34a;
 
     margin-top:6px;
 
@@ -706,6 +714,10 @@ body::after{
 }
 
 .details-btn{
+
+    position:relative;
+
+    z-index:2;
 
     background:linear-gradient(90deg,#1d3557,#2c5d9d);
 
@@ -722,6 +734,8 @@ body::after{
     font-weight:600;
 
     transition:.35s;
+
+    pointer-events:auto;
 
 }
 
@@ -769,13 +783,13 @@ body::after{
 
     overflow-y:auto;
 
-    background:#181c31;
+    background:#ffffff;
 
     border-radius:22px;
 
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid #e5e7eb;
 
-    box-shadow:0 25px 60px rgba(0,0,0,.55);
+    box-shadow:0 25px 60px rgba(15, 23, 42, .18);
 
     position:relative;
 
@@ -813,7 +827,7 @@ body::after{
 
     font-size:34px;
 
-    color:white;
+    color:#1d3557;
 
     cursor:pointer;
 
@@ -825,7 +839,7 @@ body::after{
 
 .close:hover{
 
-    color:#c084fc;
+    color:#2c5d9d;
 
     transform:rotate(90deg);
 
@@ -859,19 +873,25 @@ body::after{
 
     margin-top:12px;
 
+    color:#1d3557;
+
 }
 
 .modal-category{
 
     display:inline-block;
 
-    background:#8b5cf6;
+    background:#e8eefc;
+
+    color:#2c5d9d;
 
     padding:8px 16px;
 
     border-radius:25px;
 
     font-size:13px;
+
+    font-weight:600;
 
 }
 
@@ -899,7 +919,7 @@ body::after{
 
     gap:15px;
 
-    background:#232845;
+    background:#eef5ff;
 
     padding:20px;
 
@@ -911,13 +931,19 @@ body::after{
 
     font-size:24px;
 
-    color:#a855f7;
+    color:#2c5d9d;
 
 }
 
 .modal-item small{
 
-    color:#94a3b8;
+    color:#5b6b85;
+
+}
+
+.modal-item h4{
+
+    color:#1d3557;
 
 }
 
@@ -939,7 +965,7 @@ body::after{
 
 .price-card{
 
-    background:#232845;
+    background:#eef5ff;
 
     border-radius:18px;
 
@@ -949,29 +975,35 @@ body::after{
 
 }
 
+.price-card small{
+
+    color:#5b6b85;
+
+}
+
 .price-card h2{
 
     margin-top:10px;
 
-    color:#22c55e;
+    color:#16a34a;
 
 }
 
 .price-card.early{
 
-    border:2px solid #8b5cf6;
+    border:2px solid #d7e3ff;
 
 }
 
 .price-card.save{
 
-    border:2px solid #f59e0b;
+    border:2px solid #fde68a;
 
 }
 
 .price-card.save h2{
 
-    color:#fbbf24;
+    color:#d97706;
 
 }
 
@@ -987,13 +1019,15 @@ body::after{
 
 .description-box h3{
 
-    margin-bottom:15px;
+    margin:25px 0 15px;
+
+    color:#1d3557;
 
 }
 
 .description-box p{
 
-    color:#d1d5db;
+    color:#334155;
 
     line-height:1.8;
 
@@ -1017,7 +1051,7 @@ body::after{
 
 .seat-card{
 
-    background:#232845;
+    background:#eef5ff;
 
     border-radius:18px;
 
@@ -1031,13 +1065,21 @@ body::after{
 
     font-size:36px;
 
-    color:#a855f7;
+    color:#2c5d9d;
 
 }
 
 .seat-card small{
 
-    color:#94a3b8;
+    color:#5b6b85;
+
+}
+
+.modal-content h3{
+
+    margin:24px 0 18px 18px;
+
+    color:#1d3557;
 
 }
 
@@ -1053,7 +1095,7 @@ body::after{
 
     height:16px;
 
-    background:#374151;
+    background:#e5eefc;
 
     border-radius:30px;
 
@@ -1083,7 +1125,7 @@ body::after{
 
     font-size:18px;
 
-    color:#d1d5db;
+    color:#1d3557;
 
     font-weight:500;
 
@@ -1109,7 +1151,7 @@ body::after{
 
     width:120px;
 
-    background:#232845;
+    background:#eef5ff;
 
     border-radius:18px;
 
@@ -1133,7 +1175,7 @@ body::after{
 
     font-size:40px;
 
-    color:#c084fc;
+    color:#2c5d9d;
 
     margin-bottom:8px;
 
@@ -1141,7 +1183,7 @@ body::after{
 
 .countdown small{
 
-    color:#94a3b8;
+    color:#5b6b85;
 
 }
 

@@ -1,5 +1,13 @@
 <?php
+session_start();
 require 'database.php';
+
+if (!isset($_SESSION['user_id'])) {
+    echo "<script>alert('Please log in first to access this page.'); window.location.href='login.php';</script>";
+    exit();
+}
+
+$loggedIn = true;
 
 $events = mysqli_query($conn, "
 SELECT
@@ -40,15 +48,18 @@ EventEase
 </div>
 
 <ul>
-
 <li><a href="index.php">Home</a></li>
 <li><a href="event_listing.php">Events</a></li>
-<li><a href="booking.php" class="active">Booking</a></li>
+<li><a href="booking.php" class="active" data-protect="true">Booking</a></li>
 <li><a href="dashboard.php">Dashboard</a></li>
-<li><a href="feedback.php">Feedback</a></li>
-<li><a href="login.php">Login</a></li>
-<li><a href="signup.php">Register</a></li>
-
+<li><a href="eventmanagement.php">Event Management</a></li>
+<li><a href="feedback.php" data-protect="true">Feedback</a></li>
+<?php if ($loggedIn): ?>
+    <li><a href="logout.php">Logout</a></li>
+<?php else: ?>
+    <li><a href="login.php">Login</a></li>
+    <li><a href="signup.php">Register</a></li>
+<?php endif; ?>
 </ul>
 
 </nav>

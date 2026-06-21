@@ -142,13 +142,19 @@ a{
     margin:10px;
     padding: 10px 15px;
     font-size: 22px;
-    background-color:#4f7091;
+    background: linear-gradient(90deg, #1d3557, #2c5d9d);
     border-radius:10px;
     color: white;
     font-weight: 600;
     letter-spacing:2px;
     font-family: Arial, sans-serif;
-    transition: 0.1s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 6px 18px rgba(29, 53, 87, 0.2);
+}
+
+.submit-form-btn:hover{
+    transform: translateY(-1px);
+    background: linear-gradient(90deg, #2c5d9d, #1d3557);
 }
 
 .submit-form-btn:active{

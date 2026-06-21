@@ -2,6 +2,13 @@
 session_start();
 require 'database.php';
 
+if (!isset($_SESSION['user_id'])) {
+    echo "<script>alert('Please log in first to access this page.'); window.location.href='login.php';</script>";
+    exit();
+}
+
+$loggedIn = true;
+
 $stmt = $pdo->query("
 SELECT *
 FROM events
@@ -145,11 +152,16 @@ ORDER BY feedback_date DESC
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="event_listing.php">Events</a></li>
-        <li><a href="booking.php">Booking</a></li>
+        <li><a href="booking.php" data-protect="true">Booking</a></li>
         <li><a href="dashboard.php">Dashboard</a></li>
-        <li><a href="feedback.php" class="active">Feedback</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="signup.php">Register</a></li>
+        <li><a href="eventmanagement.php">Event Management</a></li>
+        <li><a href="feedback.php" class="active" data-protect="true">Feedback</a></li>
+        <?php if ($loggedIn): ?>
+            <li><a href="logout.php">Logout</a></li>
+        <?php else: ?>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="signup.php">Register</a></li>
+        <?php endif; ?>
     </ul>
 </nav>
 
@@ -421,5 +433,16 @@ Delete
 <?php endforeach; ?>
 
 </main>
+<script>
+    document.querySelectorAll('[data-protect="true"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            if (!<?php echo json_encode($loggedIn); ?>) {
+                e.preventDefault();
+                alert('Please log in first to access this page.');
+                window.location.href = 'login.php';
+            }
+        });
+    });
+</script>
 </body>
 </html>

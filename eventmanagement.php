@@ -1,6 +1,13 @@
 <?php
-require 'database.php';
 session_start();
+require 'database.php';
+
+if (!isset($_SESSION['user_id'])) {
+    echo "<script>alert('Please log in first to access this page.'); window.location.href='login.php';</script>";
+    exit();
+}
+
+$loggedIn = true;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['eventname'];
@@ -60,12 +67,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="event_listing.php">Events</a></li>
-            <li><a href="booking.php">Booking</a></li>
+            <li><a href="booking.php" data-protect="true">Booking</a></li>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="eventmanagement.php" class="active">Event Management</a></li>
-            <li><a href="feedback.php">Feedback</a></li>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="signup.php">Register</a></li>
+            <li><a href="feedback.php" data-protect="true">Feedback</a></li>
+            <?php if ($loggedIn): ?>
+                <li><a href="logout.php">Logout</a></li>
+            <?php else: ?>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="signup.php">Register</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 
@@ -147,6 +158,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <footer>
         <p>&copy; 2026 EventEase. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        document.querySelectorAll('[data-protect="true"]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                if (!<?php echo json_encode($loggedIn); ?>) {
+                    e.preventDefault();
+                    alert('Please log in first to access this page.');
+                    window.location.href = 'login.php';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

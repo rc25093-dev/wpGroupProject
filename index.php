@@ -1,5 +1,8 @@
 <?php
+session_start();
 require 'database.php';
+
+$loggedIn = isset($_SESSION['user_id']);
 
 $sql = "
 SELECT
@@ -44,11 +47,16 @@ if ($result = mysqli_query($conn, $bookingSql)) {
         <ul>
             <li><a href="index.php" class="active">Home</a></li>
             <li><a href="event_listing.php">Events</a></li>
-            <li><a href="booking.php">Booking</a></li>
+            <li><a href="booking.php" data-protect="true">Booking</a></li>
             <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="feedback.php">Feedback</a></li>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="signup.php">Register</a></li>
+            <li><a href="eventmanagement.php">Event Management</a></li>
+            <li><a href="feedback.php" data-protect="true">Feedback</a></li>
+            <?php if ($loggedIn): ?>
+                <li><a href="logout.php">Logout</a></li>
+            <?php else: ?>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="signup.php">Register</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 
@@ -57,11 +65,15 @@ if ($result = mysqli_query($conn, $bookingSql)) {
         <p>EventEase helps students and organizers manage events, bookings, and feedback in one place.</p>
         <div style="display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;">
             <a href="event_listing.php" class="submit-form-btn">Browse Events</a>
-            <a href="login.php" class="submit-form-btn" style="background:#fff;color:#1d3b6d;">Login</a>
+            <?php if ($loggedIn): ?>
+                <a href="dashboard.php" class="submit-form-btn" style="background:#fff;color:#1d3b6d;">Go to Dashboard</a>
+            <?php else: ?>
+                <a href="login.php" class="submit-form-btn" style="background:#fff;color:#1d3b6d;">Login</a>
+            <?php endif; ?>
         </div>
     </section>
 
-    <section class="statistics" style="width:min(1100px, 90%);margin:0 auto;">
+    <section class="statistics" style="width:min(1100px, 90%);margin:40px auto 0;">
         <div class="stat">
             <i class="fa-solid fa-calendar-check"></i>
             <h2><?php echo $totalEvents; ?></h2>
@@ -101,5 +113,16 @@ if ($result = mysqli_query($conn, $bookingSql)) {
             </div>
         </div>
     </section>
+    <script>
+        document.querySelectorAll('[data-protect="true"]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                if (!<?php echo json_encode($loggedIn); ?>) {
+                    e.preventDefault();
+                    alert('Please log in first to access this page.');
+                    window.location.href = 'login.php';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -2,92 +2,73 @@
 // EVENT MODAL
 // =====================================
 
-const modal = document.getElementById("eventModal");
-const closeBtn = document.querySelector(".close");
-const detailButtons = document.querySelectorAll(".details-btn");
-
 let countdown;
+let modal;
+let closeBtn;
 
-// Open Modal
-detailButtons.forEach(button=>{
+function openEventModal(button) {
 
-    button.addEventListener("click",function(){
+    if (!button || !modal) return;
 
-        document.getElementById("modalImage").src =
-        this.dataset.image;
+    document.getElementById("modalImage").src = button.dataset.image;
+    document.getElementById("modalTitle").innerHTML = button.dataset.name;
+    document.getElementById("modalCategory").innerHTML = button.dataset.category;
+    document.getElementById("modalDate").innerHTML = button.dataset.date;
+    document.getElementById("modalTime").innerHTML = button.dataset.time;
+    document.getElementById("modalVenue").innerHTML = button.dataset.venue;
+    document.getElementById("modalDescription").innerHTML = button.dataset.description;
+    document.getElementById("modalPrice").innerHTML = button.dataset.price;
+    document.getElementById("modalEarly").innerHTML = button.dataset.early;
+    document.getElementById("modalDiscount").innerHTML = button.dataset.discount;
+    document.getElementById("modalCapacity").innerHTML = button.dataset.capacity;
+    document.getElementById("modalBooked").innerHTML = button.dataset.booked;
+    document.getElementById("modalRemaining").innerHTML = button.dataset.remaining;
+    document.getElementById("bookButton").href = "booking.php?event_id=" + button.dataset.id;
 
-        document.getElementById("modalTitle").innerHTML =
-        this.dataset.name;
+    animateProgress(button.dataset.progress);
+    startCountdown(button.dataset.date, button.dataset.time);
 
-        document.getElementById("modalCategory").innerHTML =
-        this.dataset.category;
-
-        document.getElementById("modalDate").innerHTML =
-        this.dataset.date;
-
-        document.getElementById("modalTime").innerHTML =
-        this.dataset.time;
-
-        document.getElementById("modalVenue").innerHTML =
-        this.dataset.venue;
-
-        document.getElementById("modalDescription").innerHTML =
-        this.dataset.description;
-
-        document.getElementById("modalPrice").innerHTML =
-        this.dataset.price;
-
-        document.getElementById("modalEarly").innerHTML =
-        this.dataset.early;
-
-        document.getElementById("modalDiscount").innerHTML =
-        this.dataset.discount;
-
-        document.getElementById("modalCapacity").innerHTML =
-        this.dataset.capacity;
-
-        document.getElementById("modalBooked").innerHTML =
-        this.dataset.booked;
-
-        document.getElementById("modalRemaining").innerHTML =
-        this.dataset.remaining;
-
-        document.getElementById("bookButton").href =
-        "booking.php?event_id="+this.dataset.id;
-
-        animateProgress(this.dataset.progress);
-
-        startCountdown(this.dataset.date,this.dataset.time);
-
-        modal.style.display="flex";
-
-    });
-
-});
-
-// Close Button
-
-closeBtn.onclick=function(){
-
-    modal.style.display="none";
-
-    clearInterval(countdown);
-
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
 }
 
-// Outside Click
+document.addEventListener("DOMContentLoaded", function () {
 
-window.onclick=function(e){
+    modal = document.getElementById("eventModal");
+    closeBtn = document.querySelector(".close");
+    const detailButtons = document.querySelectorAll(".details-btn");
 
-    if(e.target==modal){
-
-        modal.style.display="none";
-
-        clearInterval(countdown);
-
+    if (modal) {
+        modal.style.display = "none";
     }
 
-}
+    detailButtons.forEach(button => {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openEventModal(this);
+        });
+    });
+
+    if (closeBtn) {
+        closeBtn.onclick = function () {
+            if (modal) {
+                modal.style.display = "none";
+            }
+            document.body.style.overflow = "";
+            clearInterval(countdown);
+        };
+    }
+
+    window.onclick = function (e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+            clearInterval(countdown);
+        }
+    };
+
+});
 
 // =====================================
 // PROGRESS BAR
