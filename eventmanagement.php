@@ -339,6 +339,10 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
+    <footer>
+        <p>&copy; 2026 EventEase. All Rights Reserved.</p>
+    </footer>
+
     <script>
         window.eventManagementLoggedIn = <?= json_encode($loggedIn) ?>;
     </script>
